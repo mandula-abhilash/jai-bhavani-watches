@@ -4,11 +4,12 @@ One page website for Jai Bhavani Watch Sales & Service, Habeeb Nagar, Sangareddy
 
 Next.js (App Router, JavaScript only), Tailwind CSS, static export.
 
-## Edit content
+## Design
 
-All content is in `data/site.js`: contact details, hours, services, brands, videos and reviews. Every fact there was checked on 24 Oct 2026 against the Google Business Profile, the YouTube channel and the Facebook page.
+Palette: forest ink `#0a1510`, cream `#f0eee5`, gold `#c7aa73`, ruby `#d32b45` (tokens in `app/globals.css`).
+Fonts: Italiana (headings), Inter (body), JetBrains Mono (labels), Mallanna (Telugu name).
 
-Images are in `public/images` (WebP). Open Graph image is `public/og.jpg`.
+Hero: an illustrated watch made of 16 SVG parts placed in CSS 3D (`components/watch/WatchExplosion.js`). It plays on a loop: assembled, apart, held, back together. Play, Pause and the slider sit under it (`components/Hero.js`). No 3D library and no image files.
 
 ## Run locally
 

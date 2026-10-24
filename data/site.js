@@ -9,7 +9,7 @@ const WHATSAPP_TEXT = "Hi, I found your website. I want to get my watch checked.
 
 export const site = {
   // Set this to the live address when deploying. Used for canonical, Open Graph and schema.
-  siteUrl: "",
+  siteUrl: "https://jaibhavani.abhilashmandula.com",
 
   name: "Jai Bhavani Watch Sales & Service",
   nameTelugu: "జై భవానీ వాచ్ సేల్స్ & సర్వీస్",
@@ -67,51 +67,61 @@ export const site = {
   services: [
     {
       title: "Movement cleaning and oiling",
+      icon: "gear",
       text: "The movement is taken apart, given a chemical wash and oiled again.",
       video: { id: "B7cTnkqu2m8", label: "HMT Kohinoor service" },
     },
     {
       title: "Rusty and water damaged watches",
+      icon: "drop",
       text: "Watches with rust or mud inside are cleaned part by part and put back together.",
       video: { id: "7Yz-qQKOj6M", label: "Rusty and muddy Allwyn" },
     },
     {
       title: "Glass replacement",
+      icon: "glass",
       text: "Acrylic, mineral and sapphire crystal glass, fitted to the watch.",
       video: { id: "ot2QD9BLlPI", label: "Seiko 5 mineral glass" },
     },
     {
       title: "Case buffing and polishing",
+      icon: "polish",
       text: "Scratches and small dents are buffed out and the case is polished.",
       video: { id: "B7cTnkqu2m8", label: "HMT Kohinoor case" },
     },
     {
       title: "Luminous compound and enamel on hands",
+      icon: "lume",
       text: "Fresh luminous compound on hands and dial markers, and enamel on faded hands.",
       video: { id: "6j9WrZBzdyM", label: "HMT Kohinoor hands" },
     },
     {
       title: "Crowns, stems and gaskets",
+      icon: "crown",
       text: "New crown, stem, case pipe and case back gasket when the old ones are worn.",
       video: { id: "5Ff0rzwD6U4", label: "Casio Edifice crown and gasket" },
     },
     {
       title: "Movement parts",
+      icon: "spring",
       text: "Balance wheel, hairspring, mainspring, jewels and wheels replaced when needed.",
       video: { id: "DpujK9u1OhQ", label: "HMT Tara balance and hairspring" },
     },
     {
       title: "Quartz circuit repair",
+      icon: "chip",
       text: "Circuit board track lines soldered on quartz movements.",
       video: { id: "jBghLct_mks", label: "Pierre Cardin circuit soldering" },
     },
     {
       title: "Battery replacement",
+      icon: "battery",
       text: "New battery for quartz watches, with the movement cleaned.",
       video: { id: "yxa3TVfQdy8", label: "Swiss Military battery" },
     },
     {
       title: "Straps and bracelets",
+      icon: "strap",
       text: "New leather straps and metal chains, and broken bracelet clamps replaced.",
       video: { id: "drKwNo5LOqU", label: "HMT automatic metal strap" },
     },

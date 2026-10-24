@@ -73,3 +73,120 @@ export function FacebookIcon({ className = "h-5 w-5" }) {
     </svg>
   );
 }
+
+const line = { ...base, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" };
+
+// Brand mark: a small dial with hands at ten past ten.
+export function LogoMark({ className = "h-8 w-8" }) {
+  return (
+    <svg {...base} viewBox="0 0 40 40" className={className}>
+      <defs>
+        <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#f3e2b4" />
+          <stop offset="0.5" stopColor="#c7aa73" />
+          <stop offset="1" stopColor="#9a7d45" />
+        </linearGradient>
+      </defs>
+      <circle cx="20" cy="20" r="18" fill="none" stroke="url(#lm-b)" strokeWidth="2.4" />
+      <circle cx="20" cy="20" r="13.5" fill="none" stroke="url(#lm-b)" strokeWidth="0.8" strokeDasharray="0.8 2.73" />
+      <path d="M20 20 L12.5 15.5" stroke="url(#lm-b)" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M20 20 L28.5 13" stroke="url(#lm-b)" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M20 20 L20 30" stroke="#d0303f" strokeWidth="1" strokeLinecap="round" />
+      <circle cx="20" cy="20" r="2" fill="url(#lm-b)" />
+    </svg>
+  );
+}
+
+export const ServiceIcons = {
+  gear: (p) => (
+    <svg {...line} {...p}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" />
+      <circle cx="12" cy="12" r="6.6" />
+    </svg>
+  ),
+  drop: (p) => (
+    <svg {...line} {...p}>
+      <path d="M12 3.2s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.6 12 3.2 12 3.2z" />
+      <path d="M9.2 14.5a2.9 2.9 0 0 0 2.8 2.6" />
+    </svg>
+  ),
+  glass: (p) => (
+    <svg {...line} {...p}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M7.5 9.5a5 5 0 0 1 3-3M8 13l5-5M10.5 15l5.5-5.5" opacity="0.7" />
+    </svg>
+  ),
+  polish: (p) => (
+    <svg {...line} {...p}>
+      <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z" />
+      <path d="M18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" />
+    </svg>
+  ),
+  lume: (p) => (
+    <svg {...line} {...p}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 12V6.5M12 12l3.8 2.4" />
+      <path d="M12 2v1.4M12 20.6V22M2 12h1.4M20.6 12H22" opacity="0.6" />
+    </svg>
+  ),
+  crown: (p) => (
+    <svg {...line} {...p}>
+      <rect x="3" y="8" width="9" height="8" rx="2" />
+      <path d="M12 12h3.2" />
+      <path d="M15.2 9.2h3.6a1.2 1.2 0 0 1 1.2 1.2v3.2a1.2 1.2 0 0 1-1.2 1.2h-3.6z" />
+      <path d="M16.6 9.2v5.6M18.2 9.2v5.6" opacity="0.6" />
+    </svg>
+  ),
+  spring: (p) => (
+    <svg {...line} {...p}>
+      <path d="M12 12a1 1 0 1 1 1-1 2.6 2.6 0 0 1-2.6 2.6A4 4 0 0 1 6.4 9.6 5.6 5.6 0 0 1 12 4a7.2 7.2 0 0 1 7.2 7.2A8.6 8.6 0 0 1 10.6 19.8" />
+    </svg>
+  ),
+  chip: (p) => (
+    <svg {...line} {...p}>
+      <rect x="6" y="6" width="12" height="12" rx="2" />
+      <path d="M9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5" />
+      <path d="M9.5 12h2l1-2 1 4 1-2h1" />
+    </svg>
+  ),
+  battery: (p) => (
+    <svg {...line} {...p}>
+      <ellipse cx="12" cy="9" rx="8" ry="3.2" />
+      <path d="M4 9v5c0 1.8 3.6 3.2 8 3.2s8-1.4 8-3.2V9" />
+      <path d="M12 7.6v2.8M10.6 9h2.8" />
+    </svg>
+  ),
+  strap: (p) => (
+    <svg {...line} {...p}>
+      <path d="M8 2.5h8v5M8 2.5v5M8 16.5v5h8v-5" />
+      <circle cx="12" cy="12" r="4.5" />
+      <path d="M12 21.5v0M12 19v0" />
+    </svg>
+  ),
+};
+
+export function CheckIcon({ className = "h-4 w-4" }) {
+  return (
+    <svg {...line} className={className} strokeWidth="2">
+      <path d="M5 12.5l4.5 4.5L19 7.5" />
+    </svg>
+  );
+}
+
+export function QuoteIcon({ className = "h-6 w-6" }) {
+  return (
+    <svg {...base} viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M10 6.5C6.6 7.6 4.5 10.3 4.5 14v3.5h6V12H7.6c.3-1.9 1.4-3.2 3.1-3.9zM19.5 6.5c-3.4 1.1-5.5 3.8-5.5 7.5v3.5h6V12h-2.9c.3-1.9 1.4-3.2 3.1-3.9z" />
+    </svg>
+  );
+}
+
+export function CalendarIcon({ className = "h-5 w-5" }) {
+  return (
+    <svg {...line} className={className}>
+      <rect x="3.5" y="5" width="17" height="15" rx="2" />
+      <path d="M3.5 9.5h17M8 3v4M16 3v4" />
+    </svg>
+  );
+}

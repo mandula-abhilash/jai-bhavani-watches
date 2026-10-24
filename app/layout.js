@@ -1,19 +1,26 @@
-import { Inter, Inter_Tight, Mallanna } from "next/font/google";
+import { Inter, Italiana, JetBrains_Mono, Mallanna } from "next/font/google";
 import { site } from "@/data/site";
 import { localBusinessSchema } from "@/lib/schema";
 import "./globals.css";
 
-const display = Inter_Tight({
+const serif = Italiana({
   subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-display-face",
+  weight: "400",
+  variable: "--font-serif-face",
   display: "swap",
 });
 
 const sans = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono-face",
   display: "swap",
 });
 
@@ -21,7 +28,7 @@ const sans = Inter({
 const telugu = Mallanna({
   subsets: ["telugu"],
   weight: "400",
-  variable: "--font-telugu",
+  variable: "--font-telugu-face",
   display: "swap",
   preload: false,
 });
@@ -50,15 +57,16 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0b1420",
+  themeColor: "#0a1510",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-IN" className={`${display.variable} ${sans.variable} ${telugu.variable}`}>
+    <html lang="en-IN" className={`${serif.variable} ${sans.variable} ${mono.variable} ${telugu.variable}`} suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema(site)) }}
