@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import BrandMarquee from "@/components/BrandMarquee";
 import Services from "@/components/Services";
+import Sales from "@/components/Sales";
 import Process from "@/components/Process";
 import Videos from "@/components/Videos";
 import Brands from "@/components/Brands";
@@ -29,6 +30,7 @@ export default function Home() {
         <TrustBar site={site} />
         <BrandMarquee site={site} />
         <Services site={site} />
+        <Sales site={site} />
         <Process site={site} />
         <Videos site={site} />
         <Brands site={site} />

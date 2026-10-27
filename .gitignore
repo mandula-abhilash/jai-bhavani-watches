@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local screenshots, not part of the site
+Claude outputs/
+
+# Brand pack zip (large, kept locally)
+brand/*.zip

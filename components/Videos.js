@@ -17,7 +17,7 @@ export default function Videos({ site }) {
 
   return (
     <section id="videos" aria-labelledby="videos-title" className="relative scroll-mt-20 bg-paper">
-      <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-5 md:px-8 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             id="videos-title"
@@ -38,7 +38,7 @@ export default function Videos({ site }) {
           </a>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-[1.65fr_1fr]">
+        <div className="mt-10 grid gap-5 lg:grid-cols-[1.65fr_1fr]">
           <div data-reveal className="overflow-hidden rounded-3xl bg-ink text-ivory shadow-[0_40px_80px_-40px_rgba(10,21,16,0.6)]">
             <div className="relative aspect-video">
               {playing ? (
@@ -62,16 +62,16 @@ export default function Videos({ site }) {
                 </button>
               )}
             </div>
-            <div className="p-6 md:p-7">
+            <div className="p-5 md:p-7">
               <p className="eyebrow text-[10.5px] text-brass">Now showing · {String(active + 1).padStart(2, "0")} of {String(site.videos.length).padStart(2, "0")}</p>
-              <h3 className="mt-2 font-serif text-[28px] leading-tight md:text-[34px]">{v.title}</h3>
+              <h3 className="mt-2 font-serif text-[24px] font-medium leading-tight md:text-[30px]">{v.title}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-ivory/60">{v.work}</p>
             </div>
           </div>
 
-          <ul className="no-scrollbar -mx-5 flex snap-x gap-3 overflow-x-auto px-5 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0">
+          <ul className="no-scrollbar -mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 sm:-mx-5 sm:px-5 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0">
             {site.videos.map((item, i) => (
-              <li key={item.id} className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
+              <li key={item.id} className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
                 <button
                   type="button"
                   onClick={() => pick(i)}
@@ -80,7 +80,7 @@ export default function Videos({ site }) {
                     i === active ? "border-brass bg-ivory shadow-[0_12px_30px_-18px_rgba(60,80,50,0.6)]" : "border-line bg-ivory/60 hover:border-brass/50"
                   }`}
                 >
-                  <span className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-xl bg-ink md:w-32">
+                  <span className="relative aspect-video w-24 shrink-0 sm:w-28 overflow-hidden rounded-xl bg-ink md:w-32">
                     <img src={item.thumb} alt="" width={640} height={360} loading="lazy" className="h-full w-full object-cover" />
                     {i === active && (
                       <span className="absolute inset-0 grid place-items-center bg-ink/40">

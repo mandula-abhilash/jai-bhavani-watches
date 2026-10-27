@@ -10,17 +10,17 @@ export default function Footer({ site }) {
   ];
   return (
     <footer className="border-t border-ivory/10 bg-ink pb-28 text-ivory md:pb-0">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-[1.2fr_1fr] md:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-5 md:grid-cols-[1.2fr_1fr] md:px-8">
         <div>
           <div className="flex items-center gap-3">
-            <LogoMark className="h-11 w-11" />
+            <LogoMark className="h-14 w-14 shrink-0" />
             <div>
-              <p className="font-serif text-[26px] leading-none">{site.name}</p>
+              <p className="font-serif text-[22px] font-medium leading-tight">{site.name}</p>
               <p lang="te" className="mt-1 font-telugu text-[15px] text-ivory/45">{site.nameTelugu}</p>
             </div>
           </div>
           <p className="mt-6 max-w-sm text-[14.5px] leading-relaxed text-ivory/55">
-            Watch servicing, restoration and repair by {site.owner}. {site.address.line}. {site.hours.label}, {site.hours.time}.
+            Watch sales, servicing, restoration and repair by {site.owner}. Wrist watches and wall clocks for sale. {site.address.line}. {site.hours.label}, {site.hours.time}.
           </p>
         </div>
         <ul className="grid grid-cols-2 gap-2 self-start sm:grid-cols-3">
@@ -39,7 +39,7 @@ export default function Footer({ site }) {
         </ul>
       </div>
       <div className="border-t border-ivory/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-[12.5px] text-ivory/45 md:flex-row md:items-center md:justify-between md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-[12.5px] sm:px-5 text-ivory/45 md:flex-row md:items-center md:justify-between md:px-8">
           <p>© {new Date().getFullYear()} {site.name}</p>
           <p>
             Designed &amp; developed by{" "}

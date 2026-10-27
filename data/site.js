@@ -6,6 +6,7 @@ const yt = (id) => `https://www.youtube.com/watch?v=${id}`;
 
 const WHATSAPP_NUMBER = "919154032039"; // from his YouTube descriptions: "9154032039 only on WhatsApp"
 const WHATSAPP_TEXT = "Hi, I found your website. I want to get my watch checked.";
+const WHATSAPP_SALES_TEXT = "Hi, I found your website. I want to buy a watch or a clock. What do you have in stock?";
 
 export const site = {
   // Set this to the live address when deploying. Used for canonical, Open Graph and schema.
@@ -16,9 +17,9 @@ export const site = {
   owner: "Deepu Kulkarni",
   tagline: "Watch servicing and restoration in Sangareddy, by Deepu Kulkarni.",
   meta: {
-    title: "Jai Bhavani Watch Sales & Service · Watch repair in Sangareddy",
+    title: "Watch Shop & Watch Repair in Sangareddy | Jai Bhavani Watch Sales & Service",
     description:
-      "Watch servicing and restoration in Habeeb Nagar, Sangareddy. Cleaning and oiling, glass replacement, case polishing, luminous compound, crowns, gaskets and batteries. Open every day, 10 AM to 10 PM.",
+      "Buy wrist watches and wall clocks, and get your watch repaired, in Habeeb Nagar, Sangareddy. Servicing and restoration by Deepu Kulkarni for HMT, Titan, Seiko, Casio and Swiss watches. Open daily, 10 AM to 10 PM.",
   },
 
   phone: { display: "099490 69498", tel: "+919949069498" },
@@ -26,7 +27,17 @@ export const site = {
     display: "91540 32039",
     number: WHATSAPP_NUMBER,
     url: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_TEXT)}`,
+    salesUrl: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_SALES_TEXT)}`,
   },
+
+  // What the shop sells. Seen in his shop photos and the Google listing name.
+  // No brand or price claims here until Deepu confirms what he stocks.
+  sales: [
+    { title: "Wrist watches", text: "New wrist watches on display at the counter. Come in, see them and pick one." },
+    { title: "Wall clocks", text: "Wall clocks for home, office and shop, on the wall right inside." },
+    { title: "Straps and chains", text: "Leather straps and metal chains, fitted to your watch at the shop." },
+    { title: "Watch batteries", text: "Batteries for quartz watches, fitted at the shop." },
+  ],
 
   address: {
     line: "Habeeb Nagar, Sangareddy, Telangana 502001",
@@ -37,14 +48,15 @@ export const site = {
     country: "IN",
     plusCode: "J38J+CF Sangareddy",
   },
-  geo: { lat: 17.6161063, lng: 78.0811591 },
-  hours: { label: "Open every day", time: "10:00 AM to 10:00 PM", opens: "10:00", closes: "22:00" },
+  // Exact pin of the shop door, confirmed by Abhilash on 27 Oct 2026.
+  geo: { lat: 17.616135569462273, lng: 78.0811579853913 },
+  hours: { label: "Open every day", time: "10 AM to 10 PM", opens: "10:00", closes: "22:00" },
 
   google: {
     profile: "https://maps.google.com/?cid=15113356896526980821",
-    directions: "https://www.google.com/maps/dir/?api=1&destination=17.6161063,78.0811591",
-    embed:
-      "https://maps.google.com/maps?q=Jai%20Bhavani%20Watch%20Sales%20%26%20Service%2C%20Habeeb%20Nagar%2C%20Sangareddy&ll=17.6161063,78.0811591&z=17&output=embed",
+    directions: "https://www.google.com/maps/dir/?api=1&destination=17.616135569462273,78.0811579853913",
+    // Pinned by coordinates so the marker sits exactly on the shop, not on a name search result.
+    embed: "https://maps.google.com/maps?q=17.616135569462273,78.0811579853913&z=18&hl=en&output=embed",
     rating: "4.4",
     reviewCount: "153",
   },
@@ -56,12 +68,26 @@ export const site = {
 
   photos: {
     hero: { src: "/images/restored-green-dial", sizes: [640, 900, 1200], w: 1600, h: 900, alt: "A serviced watch with a green dial on the bench at Jai Bhavani Watch" },
-    owner: { src: "/images/deepu-at-shop", sizes: [480, 800], w: 1600, h: 2133, alt: "Deepu Kulkarni at the entrance of Jai Bhavani Watch Sales & Service" },
+    owner: { src: "/images/deepu-portrait", sizes: [480, 800], w: 1122, h: 1402, alt: "Deepu Kulkarni, watchmaker at Jai Bhavani Watch Sales & Service, holding a watch" },
     front: { src: "/images/shop-front", sizes: [640, 1200], w: 1600, h: 600, alt: "Shop front of Jai Bhavani Watch Sales & Service in Sangareddy" },
     inside: { src: "/images/shop-inside", sizes: [640, 1000], w: 1600, h: 1200, alt: "Inside the shop: wall clocks and watch display counters" },
     display: { src: "/images/watch-display", sizes: [640, 1000], w: 1600, h: 1200, alt: "Watches on display in the shop" },
     restored: { src: "/images/restored-white-dial", sizes: [640, 1000], w: 1600, h: 901, alt: "A watch with a white dial and jubilee bracelet after service" },
   },
+
+  // Hero 3D carousel. Studio edits of watches from his own repair videos.
+  showcase: [
+    ["kohinoor", "HMT Kohinoor", "Full vintage service"],
+    ["seiko-5", "Seiko 5 automatic", "Buffed and polished"],
+    ["rado", "Rado automatic", "Serviced and cleaned"],
+    ["favre-leuba", "Favre-Leuba Sea-King", "Vintage service"],
+    ["tag-heuer", "Tag Heuer", "Opened, serviced, closed"],
+    ["casio-edifice", "Casio Edifice", "Rusty watch brought back"],
+    ["tissot", "Tissot chronograph", "Full service"],
+    ["allwyn", "Allwyn 17 jewels", "Rust and mud cleaned out"],
+    ["pierre-cardin", "Pierre Cardin", "Circuit board repair"],
+    ["citizen", "Citizen automatic", "Serviced and polished"],
+  ].map(([id, title, note]) => ({ src: `/images/work-${id}.webp`, title, note })),
 
   // Each service is backed by his own video description.
   services: [

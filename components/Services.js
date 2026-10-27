@@ -11,7 +11,7 @@ export default function Services({ site }) {
   return (
     <section id="services" aria-labelledby="services-title" className="relative scroll-mt-20 bg-ivory">
       <div aria-hidden="true" className="absolute inset-0 bg-grid-light mask-fade-y" />
-      <div className="relative mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-5 md:px-8 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             id="services-title"
@@ -22,24 +22,23 @@ export default function Services({ site }) {
           />
         </div>
 
-        <div className="mt-12 grid auto-rows-[minmax(0,auto)] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-5">
           {/* Featured */}
           <a
             href={yt(featured.video.id)}
             target="_blank"
             rel="noopener noreferrer"
             data-reveal
-            className="group relative flex min-h-[420px] flex-col justify-end overflow-hidden rounded-3xl bg-ink p-7 text-ivory sm:col-span-2 lg:row-span-2 md:p-9"
+            className="group relative flex min-h-[340px] flex-col justify-end overflow-hidden rounded-3xl bg-ink p-6 text-ivory sm:col-span-2 md:min-h-[420px] md:p-9 lg:row-span-2"
           >
-            <img src="/images/yt-B7cTnkqu2m8.webp" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-45 transition duration-700 group-hover:scale-105 group-hover:opacity-55" />
+            <img src="/images/work-kohinoor.webp" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[50%_35%] opacity-60 transition duration-700 group-hover:scale-105 group-hover:opacity-55" />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/10" />
-            <GearCluster className="absolute -right-10 -top-10 h-64 w-64 opacity-80 md:h-80 md:w-80" />
             <div className="relative">
               <span className="grid h-12 w-12 place-items-center rounded-2xl border border-brass/40 bg-brass/15 text-brass backdrop-blur">
                 <FIcon className="h-6 w-6" />
               </span>
               <p className="eyebrow mt-6 text-brass">Most asked</p>
-              <h3 className="mt-2 font-serif text-[34px] leading-[1.05] md:text-[44px]">{featured.title}</h3>
+              <h3 className="mt-2 font-serif text-[28px] font-medium leading-[1.1] md:text-[40px]">{featured.title}</h3>
               <p className="mt-3 max-w-md text-[16px] leading-relaxed text-ivory/70">{featured.text}</p>
               <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-ivory px-4 py-2 text-[13.5px] font-semibold text-ink transition group-hover:bg-brass-2">
                 <PlayIcon className="h-4 w-4" />
@@ -55,7 +54,7 @@ export default function Services({ site }) {
             rel="noopener noreferrer"
             data-reveal
             style={{ "--d": "80ms" }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-[#e9e6d6] to-paper p-7 sm:col-span-2"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-[#e9e6d6] to-paper p-6 sm:col-span-2 md:p-7"
           >
             <div className="flex items-start justify-between gap-6">
               <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-brass">
@@ -63,8 +62,8 @@ export default function Services({ site }) {
               </span>
               <span className="eyebrow rounded-full border border-brass-ink/25 px-3 py-1 text-[10px] text-brass-ink">Before and after</span>
             </div>
-            <div className="mt-8">
-              <h3 className="font-serif text-[30px] leading-[1.05]">{wide.title}</h3>
+            <div className="mt-6">
+              <h3 className="font-serif text-[24px] font-medium leading-[1.15] md:text-[28px]">{wide.title}</h3>
               <p className="mt-2 max-w-md text-[15px] leading-relaxed text-muted">{wide.text}</p>
               <CardLink label={wide.video.label} />
             </div>
@@ -80,14 +79,16 @@ export default function Services({ site }) {
                 rel="noopener noreferrer"
                 data-reveal
                 style={{ "--d": `${(i % 4) * 70}ms` }}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-line bg-paper p-6 transition duration-300 hover:-translate-y-1 hover:border-brass/50 hover:shadow-[0_24px_50px_-28px_rgba(60,80,50,0.45)]"
+                className="group relative grid grid-cols-[44px_1fr] gap-x-4 overflow-hidden rounded-2xl border border-line bg-paper p-4 transition duration-300 hover:border-brass/50 hover:shadow-[0_24px_50px_-28px_rgba(60,80,50,0.45)] sm:flex sm:flex-col sm:rounded-3xl sm:p-6"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-2xl border border-brass/30 bg-gradient-to-b from-[#f3efe0] to-[#e7e0c8] text-brass-ink transition group-hover:bg-none group-hover:bg-ink group-hover:text-brass">
+                <span className="row-span-1 grid h-11 w-11 place-items-center rounded-2xl border border-brass/30 bg-gradient-to-b from-[#f3efe0] to-[#e7e0c8] text-brass-ink transition group-hover:bg-none group-hover:bg-ink group-hover:text-brass">
                   <Icon className="h-[22px] w-[22px]" />
                 </span>
-                <h3 className="mt-5 text-[17px] font-semibold leading-snug">{s.title}</h3>
-                <p className="mt-1.5 flex-1 text-[14.5px] leading-relaxed text-muted">{s.text}</p>
-                <CardLink label={s.video.label} />
+                <div className="flex min-w-0 flex-1 flex-col">
+                  <h3 className="text-[16.5px] font-semibold leading-snug sm:mt-5 sm:text-[17px]">{s.title}</h3>
+                  <p className="mt-1 flex-1 text-[14.5px] leading-relaxed text-muted sm:mt-1.5">{s.text}</p>
+                  <CardLink label={s.video.label} />
+                </div>
               </a>
             );
           })}
@@ -98,12 +99,12 @@ export default function Services({ site }) {
             target="_blank"
             rel="noopener noreferrer"
             data-reveal
-            className="group relative flex flex-col justify-between gap-6 overflow-hidden rounded-3xl bg-gradient-to-br from-[#e6cf94] via-[#c7aa73] to-[#9a7d45] p-7 text-ink sm:col-span-2"
+            className="group relative flex flex-col justify-between gap-6 overflow-hidden rounded-3xl bg-gradient-to-br from-[#e6cf94] via-[#c7aa73] to-[#9a7d45] p-6 text-ink sm:col-span-2 md:p-7"
           >
-            <GearCluster className="absolute -bottom-16 -right-12 h-56 w-56 opacity-30 mix-blend-multiply" mono />
+            <GearCluster className="pointer-events-none absolute -bottom-20 -right-16 h-56 w-56 opacity-20 mix-blend-multiply" mono />
             <div className="relative">
               <p className="eyebrow text-ink/70">Not sure what it needs?</p>
-              <h3 className="mt-2 max-w-sm font-serif text-[30px] leading-[1.05]">Send a photo of your watch on WhatsApp.</h3>
+              <h3 className="mt-2 max-w-sm font-serif text-[26px] font-medium leading-[1.1] md:text-[30px]">Send a photo of your watch on WhatsApp.</h3>
             </div>
             <span className="relative inline-flex w-fit items-center gap-2.5 rounded-full bg-ink py-2 pl-2 pr-5 text-[14px] font-semibold text-ivory">
               <span className="grid h-7 w-7 place-items-center rounded-full bg-[#128c4a]">
@@ -121,7 +122,7 @@ export default function Services({ site }) {
 
 function CardLink({ label }) {
   return (
-    <span className="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-text">
+    <span className="mt-3 inline-flex items-center gap-2 text-[13px] font-semibold text-text sm:mt-4">
       <span className="grid h-6 w-6 place-items-center rounded-full bg-ink text-brass transition group-hover:bg-brass group-hover:text-ink">
         <PlayIcon className="h-3 w-3" />
       </span>
@@ -130,7 +131,7 @@ function CardLink({ label }) {
   );
 }
 
-// Two meshing gears, drawn in SVG and turning slowly.
+// Two meshing gears, drawn in SVG. Static decoration.
 export function GearCluster({ className = "", mono = false }) {
   const teeth = (n, r, d) =>
     Array.from({ length: n }, (_, i) => {
@@ -153,7 +154,7 @@ export function GearCluster({ className = "", mono = false }) {
           <stop offset="1" stopColor="#9a7d45" />
         </linearGradient>
       </defs>
-      <g className="animate-spin-slow motion-safe-anim" style={{ transformOrigin: "-20px -10px", transformBox: "view-box" }}>
+      <g>
         <g transform="translate(-20 -10)">
           <polygon points={teeth(40, 58, 6)} fill="none" stroke={stroke} strokeWidth="1.4" />
           <circle r="40" fill="none" stroke={stroke} strokeWidth="1" />
@@ -163,7 +164,7 @@ export function GearCluster({ className = "", mono = false }) {
           ))}
         </g>
       </g>
-      <g className="animate-spin-rev motion-safe-anim" style={{ transformOrigin: "58px 52px", transformBox: "view-box", animationDuration: "12.6s" }}>
+      <g>
         <g transform="translate(58 52)">
           <polygon points={teeth(20, 30, 5)} fill="none" stroke={stroke} strokeWidth="1.4" />
           <circle r="6" fill="none" stroke={stroke} strokeWidth="1.4" />

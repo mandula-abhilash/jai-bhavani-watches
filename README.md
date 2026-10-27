@@ -7,9 +7,15 @@ Next.js (App Router, JavaScript only), Tailwind CSS, static export.
 ## Design
 
 Palette: forest ink `#0a1510`, cream `#f0eee5`, gold `#c7aa73`, ruby `#d32b45` (tokens in `app/globals.css`).
-Fonts: Italiana (headings), Inter (body), JetBrains Mono (labels), Mallanna (Telugu name).
+Fonts: Fraunces (headings), Inter (body), JetBrains Mono (labels), Mallanna (Telugu name).
 
-Hero: an illustrated watch made of 16 SVG parts placed in CSS 3D (`components/watch/WatchExplosion.js`). It plays on a loop: assembled, apart, held, back together. Play, Pause and the slider sit under it (`components/Hero.js`). No 3D library and no image files.
+Hero: keyword H1, actions, then a 3D carousel of his work (`components/HeroCarousel.js`, styles under "Hero 3D carousel" in `app/globals.css`). It turns to the next card, zooms in, holds, then turns again. Pauses on hover and supports swipe and arrows.
+
+Carousel photos: `public/images/work-*.webp`, portrait 4:5, 432 x 540. To swap in new edits, keep the same file names, or edit the `showcase` list in `data/site.js`.
+
+Reduced motion: only the entrance fades stop. The marquee and the carousel keep running, because Windows turns reduced motion on whenever "Animation effects" is off.
+
+Location: exact shop pin in `data/site.js` (`geo`). The map embed and directions link use the coordinates, not a name search.
 
 ## Run locally
 

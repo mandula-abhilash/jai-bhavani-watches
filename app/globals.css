@@ -23,15 +23,10 @@
   --font-telugu: var(--font-telugu-face), sans-serif;
 
   --animate-marquee: marquee 48s linear infinite;
-  --animate-spin-slow: spin 18s linear infinite;
-  --animate-spin-rev: spin-rev 12s linear infinite;
   --animate-pulse-dot: pulse-dot 2s ease-out infinite;
 
   @keyframes marquee {
     to { transform: translateX(-50%); }
-  }
-  @keyframes spin-rev {
-    to { transform: rotate(-360deg); }
   }
   @keyframes pulse-dot {
     0% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 55%, transparent); }
@@ -70,7 +65,7 @@ body {
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -120,8 +115,8 @@ body {
 /* Scroll reveal. Elements start visible if JS never runs. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform: translateY(12px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
   transition-delay: var(--d, 0ms);
 }
 .js [data-reveal].is-in {
@@ -129,116 +124,168 @@ body {
   transform: none;
 }
 
-/* Decorative motion (brand marquee, gears, reveals) runs regardless of the OS
-   "reduced motion" setting, which Windows turns on when animation effects are off. */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+/* Hero entrance: one soft fade up on load, nothing else. */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.hero-in {
+  animation: hero-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
 }
 
-/* Exploded watch animation (components/watch/WatchExplosion.js). */
-.watch-explosion {
-  --explode: 0;
-  /* Straightens a little as it opens so the stack reads top to bottom. */
-  --rx: calc(44deg + var(--explode) * 6deg);
-  --ry: calc(-17deg + var(--explode) * 11deg);
-  --rz: calc(-27deg + var(--explode) * 9deg);
-  --shrink: calc(1 - var(--explode) * 0.31);
+/* Hero 3D carousel (components/HeroCarousel.js). */
+.hc {
+  --cw: 172px;
+  --ch: 215px;
+  --r: calc(var(--cw) / 2 / tan(180deg / var(--n)) + 18px);
   position: relative;
-  width: 100%;
-  height: clamp(480px, 65vw, 760px);
-  isolation: isolate;
 }
-.watch-explosion .we-stage {
+.hc-stage {
+  position: relative;
+  height: calc(var(--ch) * 1.5);
+  perspective: 1100px;
+  perspective-origin: 50% 35%;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+.hc-ring {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 620px;
-  height: 720px;
-  perspective: 1400px;
-  transform: translate(-50%, -50%) scale(var(--fit, 1));
-}
-.watch-explosion .we-watch {
-  position: absolute;
-  left: 140px;
-  top: 190px;
-  width: 340px;
-  height: 340px;
+  top: 46%;
+  width: 0;
+  height: 0;
   transform-style: preserve-3d;
-  transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz)) scale(var(--shrink));
+  transition: transform 1.25s cubic-bezier(0.65, 0, 0.3, 1);
 }
-.watch-explosion .we-part {
+.hc-card {
   position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  will-change: transform;
-  transform: translate3d(0, 0, calc(var(--z) + var(--explode) * var(--dz)));
+  left: calc(var(--cw) / -2);
+  top: calc(var(--ch) / -2);
+  width: var(--cw);
+  height: var(--ch);
+  margin: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
-.watch-explosion .we-part svg {
+.hc-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgb(230 207 148 / 0.18);
+  background: #10241a;
+  box-shadow: 0 30px 50px -28px rgb(0 0 0 / 0.9);
+  filter: brightness(0.5) saturate(0.8);
+  transform: scale(0.88);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s, filter 0.6s ease 0s, border-color 0.6s ease;
+}
+/* Arrive first, then zoom in: the delay lets the turn finish. */
+.hc-card.is-active .hc-inner {
+  filter: none;
+  transform: scale(1.18) translateZ(40px);
+  border-color: rgb(230 207 148 / 0.7);
+  box-shadow: 0 40px 70px -30px rgb(0 0 0 / 0.95), 0 0 0 1px rgb(230 207 148 / 0.25), 0 0 60px -10px rgb(199 170 115 / 0.35);
+  /* Lands, then grows a little past size and settles: a soft zoom in. */
+  transition: transform 0.9s cubic-bezier(0.34, 1.5, 0.64, 1) 0.7s, filter 0.6s ease 0.6s, border-color 0.6s ease 0.6s, box-shadow 0.6s ease 0.6s;
+}
+.hc-inner img {
   display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
-  filter: drop-shadow(2px 5px 4px #0006);
-}
-/* The strap stays with the case and fades out so it never cuts through the open stack. */
-.watch-explosion .we-strap {
-  opacity: calc(1 - var(--explode) * 1.6);
-}
-.watch-explosion .we-shadow {
-  position: absolute;
-  left: 130px;
-  top: 570px;
-  width: 360px;
-  height: 65px;
-  border-radius: 50%;
-  background: #0005;
-  filter: blur(26px);
-  transform: rotate(-15deg);
-  opacity: calc(1 - var(--explode) * 0.35);
-}
-/* Part labels: attached to the part's rim, counter-rotated so they face the viewer. */
-.watch-explosion .we-label {
-  position: absolute;
-  display: none;
-  align-items: center;
-  gap: 10px;
-  transform-origin: 0 50%;
-  transform: translateY(-50%) scale(calc(1 / var(--shrink))) rotateZ(calc(-1 * var(--rz))) rotateY(calc(-1 * var(--ry))) rotateX(calc(-1 * var(--rx)));
-  opacity: calc((var(--explode) - 0.6) * 2.8);
-  white-space: nowrap;
+  object-fit: cover;
   pointer-events: none;
 }
-.watch-explosion .we-line {
-  width: 34px;
-  height: 1px;
-  background: linear-gradient(to right, #e6cf94, #c7aa7366);
-  box-shadow: -1px 0 0 0 #e6cf94;
+.hc-inner figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 36px 14px 12px;
+  background: linear-gradient(to top, rgb(8 16 12 / 0.92), transparent);
+  color: #f0eee5;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.watch-explosion .we-text {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  line-height: 1.2;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #e9ecdf;
+.hc-card.is-active figcaption {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.1s;
 }
-.watch-explosion .we-text b {
-  font-weight: 500;
-  color: var(--color-brass);
-}
-.watch-explosion .we-text small {
+.hc-title {
   display: block;
-  font-size: 9px;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  color: #8fa293;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
 }
-@media (min-width: 768px) {
-  .watch-explosion .we-label { display: flex; }
+.hc-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: #e6cf94;
 }
-/* Phones: the box is short, so the open stack shrinks more to stay inside it. */
-@media (max-width: 767px) {
-  .watch-explosion {
-    --shrink: calc(1 - var(--explode) * 0.46);
+.hc-floor {
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  width: min(92%, calc(var(--r) * 2.2));
+  height: 46px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.55), transparent);
+  filter: blur(6px);
+  pointer-events: none;
+}
+.hc-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 6px;
+}
+.hc-count {
+  min-width: 64px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgb(240 238 229 / 0.6);
+}
+.hc-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgb(240 238 229 / 0.2);
+  color: #f0eee5;
+  transition: border-color 0.2s, background 0.2s;
+}
+.hc-btn:hover { border-color: #c7aa73; background: rgb(199 170 115 / 0.12); }
+.hc-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (min-width: 640px) {
+  .hc { --cw: 210px; --ch: 262px; }
+}
+@media (min-width: 1024px) {
+  .hc { --cw: 240px; --ch: 300px; }
+  .hc-title { font-size: 18px; }
+  /* Desktop: the ring sits in the right column. Side cards fade out at the
+     column edges so they never run under the headline. */
+  .hc-stage {
+    height: calc(var(--ch) * 1.55);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
   }
+}
+
+/* Reduced motion (Windows turns this on when "Animation effects" is off).
+   Only the entrance fades stop. The marquee and the carousel are slow and
+   steady, so they keep running. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-in { animation: none; }
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
